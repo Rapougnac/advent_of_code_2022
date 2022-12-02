@@ -2,9 +2,8 @@ void main(List<String> args) {
   final elvesSplitted = input.split('\n\n');
   final unflatted = elvesSplitted.map<List<String>>((e) => e.split('\n'));
   final totalForElves = <int>[];
-  for (var calories in unflatted) {
-    calories = calories.where((e) => e.isNotEmpty).toList();
-    final intParsed = calories.map<int>(int.parse);
+  for (final calories in unflatted) {
+    final intParsed = calories.where((e) => e.isNotEmpty).map<int>(int.parse);
     final total = intParsed.fold<int>(0, (previousValue, element) => previousValue + element);
     totalForElves.add(total);
   }
