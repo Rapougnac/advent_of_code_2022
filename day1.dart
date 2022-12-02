@@ -10,7 +10,8 @@ void main(List<String> args) {
   }
 
   totalForElves.sort();
-  print(totalForElves.reversed.take(3).fold<int>(0, (previousValue, element) => previousValue + element));
+  print(totalForElves.last); // Part 1
+  print(totalForElves.reversed.take(3).fold<int>(0, (previousValue, element) => previousValue + element)); // Part 2
 }
 
 
