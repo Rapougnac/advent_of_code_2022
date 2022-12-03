@@ -1,3 +1,5 @@
+library advent_of_code_2022.day2;
+
 import 'dart:io';
 
 void main(List<String> args) {
