@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-
   final scorePt1 = partOne();
   final scorePt2 = partTwo();
 
@@ -32,7 +31,8 @@ int partOne([String? inpt]) {
           case RPS.scissors:
             score += winValue;
             break;
-          default:break;
+          default:
+            break;
         }
         break;
       case RPS.paper:
@@ -44,7 +44,8 @@ int partOne([String? inpt]) {
           case RPS.paper:
             score += drawValue;
             break;
-          default:break;
+          default:
+            break;
         }
         break;
       case RPS.scissors:
@@ -56,7 +57,8 @@ int partOne([String? inpt]) {
           case RPS.scissors:
             score += drawValue;
             break;
-          default:break;
+          default:
+            break;
         }
         break;
     }
@@ -97,7 +99,7 @@ int partTwo([String? inpt]) {
         switch (meRecords) {
           case DrawWinLoose.draw:
             score += drawValue;
-            // Paper equals paper 
+            // Paper equals paper
             score += paperValue;
             break;
           case DrawWinLoose.loose:
@@ -106,7 +108,7 @@ int partTwo([String? inpt]) {
             break;
           case DrawWinLoose.win:
             score += winValue;
-            // Scissors win against paper 
+            // Scissors win against paper
             score += scissorsValue;
             break;
         }
@@ -131,7 +133,6 @@ int partTwo([String? inpt]) {
         break;
     }
   }
-
 
   return score;
 }

@@ -35,8 +35,7 @@ List<int> _(String inpt) {
   final totalForElves = <int>[];
   for (final calories in elves) {
     final intParsed = calories.where((e) => e.isNotEmpty).map<int>(int.parse);
-    final total = intParsed.fold<int>(
-        0, (previousValue, element) => previousValue + element);
+    final total = intParsed.fold<int>(0, (previousValue, element) => previousValue + element);
     totalForElves.add(total);
   }
 
