@@ -9,13 +9,14 @@ void main(List<String> args) {
   print(scorePt2);
 }
 
-Iterable<String> genMatches() {
-  return input.split('\n').where((e) => e.isNotEmpty);
+Iterable<String> genMatches([String? inpt]) {
+  inpt ??= input;
+  return inpt.split('\n').where((e) => e.isNotEmpty);
 }
 
-int partOne() {
+int partOne([String? inpt]) {
   int score = 0;
-  final matches = genMatches();
+  final matches = genMatches(inpt);
   for (final match in matches) {
     final plays = match.split(' ');
     final opponentPlay = records[plays.first]!;
@@ -64,10 +65,10 @@ int partOne() {
   return score;
 }
 
-int partTwo() {
+int partTwo([String? inpt]) {
   int score = 0;
 
-  final matches = genMatches();
+  final matches = genMatches(inpt);
 
   for (final match in matches) {
     final plays = match.split(' ');
