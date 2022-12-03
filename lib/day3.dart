@@ -54,19 +54,20 @@ const uppercaseAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 Map<String, int>? _records;
 
-final records = _records ?? (() {
-  final tmp = <String, int>{};
-  for (int i = 0, y = 0; i < lowercaseAlphabet.length + uppercaseAlphabet.length; i++) {
-    try {
-      tmp.putIfAbsent(lowercaseAlphabet[i], () => i + 1); // If OOB, go to upper case.
-    } catch (_) {
-      tmp.putIfAbsent(uppercaseAlphabet[y], () => i + 1);
-      y++;
-    }
-  }
+final records = _records ??
+    (() {
+      final tmp = <String, int>{};
+      for (int i = 0, y = 0; i < lowercaseAlphabet.length + uppercaseAlphabet.length; i++) {
+        try {
+          tmp.putIfAbsent(lowercaseAlphabet[i], () => i + 1); // If OOB, go to upper case.
+        } catch (_) {
+          tmp.putIfAbsent(uppercaseAlphabet[y], () => i + 1);
+          y++;
+        }
+      }
 
-  return _records = tmp;
-})();
+      return _records = tmp;
+    })();
 
 extension F<E> on List<E> {
   // https://github.com/nyxx-discord/nyxx/blob/dev/lib/src/utils/utils.dart#L14
