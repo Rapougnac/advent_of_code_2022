@@ -1,0 +1,76 @@
+name: unit-test
+
+on:
+  push:
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dart Actions
+        uses: dart-lang/setup-dart@v1
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub_cache
+          key: ${{ runner.os }}-pubspec-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pubspec-
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Analyze project
+        run: dart analyze
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Dart Action
+        uses: dart-lang/setup-dart@v1
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pubspec-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pubspec-
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Format
+        run: dart format --set-exit-if-changed -l 160 ./lib
+
+  tests:
+    needs: [format, analyze]
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Dart Action
+        uses: dart-lang/setup-dart@v1
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pubspec-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pubspec-
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Unit tests
+        run: dart run test tests/**
