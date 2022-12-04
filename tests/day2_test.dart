@@ -19,7 +19,6 @@ A X
 ''';
 
 void main() {
-
   test('Day two, Part one', () {
     final res = partOne(input);
     expect(res, 78);
@@ -27,6 +26,6 @@ void main() {
 
   test('Day two, Part two', () {
     final res = partTwo(input);
-    expect(res, 75); 
+    expect(res, 75);
   });
 }

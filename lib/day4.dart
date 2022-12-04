@@ -24,7 +24,7 @@ int partTwo([String? inpt]) {
 
 Iterable<List<String>> genPairs([String? inpt]) {
   inpt ??= input;
-  return input.split('\n').map((e) => e.split(',')).where((e) => e.where((element) => element.isNotEmpty).isNotEmpty);
+  return inpt.split('\n').map((e) => e.split(',')).where((e) => e.where((element) => element.isNotEmpty).isNotEmpty);
 }
 
 Iterable<List<List<int>>> genPaired([String? inpt]) {
