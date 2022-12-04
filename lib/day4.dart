@@ -36,11 +36,7 @@ Iterable<List<List<int>>> genPaired([String? inpt]) {
       final from = splitted.first;
       final to = splitted.last;
 
-
-      List<int> range = [
-        for (int i = from; i <= to; i++)
-          i
-      ];
+      List<int> range = [for (int i = from; i <= to; i++) i];
 
       ranges.add(range);
     }
