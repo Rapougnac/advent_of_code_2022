@@ -1,3 +1,5 @@
+library advent_of_code.day5;
+
 import 'dart:io';
 
 void main(List<String> args) {
